@@ -1,0 +1,86 @@
+    Updating crates.io index
+   Compiling proc-macro2 v1.0.58
+   Compiling unicode-ident v1.0.8
+   Compiling quote v1.0.27
+   Compiling thiserror v1.0.40
+   Compiling syn v2.0.16
+   Compiling thiserror-impl v1.0.40
+   Compiling hello v0.1.0 (/home/dorus/git/rust/hello)
+error: expected `;`, found keyword `let`
+  --> src/main.rs:29:33
+   |
+29 |     let run_config = RunConfig{}
+   |                                 ^ help: add `;` here
+30 | 
+31 |     let _obsmod = get_module(module_data_folder);
+   |     --- unexpected token
+
+error[E0412]: cannot find type `Error` in this scope
+  --> src/obshtml/cli.rs:27:50
+   |
+27 | fn execute_run(cfg: RunConfig) -> Result<String, Error> {
+   |                                                  ^^^^^ not found in this scope
+   |
+help: consider importing one of these items
+   |
+3  | use core::fmt::Error;
+   |
+3  | use crate::std::error::Error;
+   |
+3  | use crate::std::fmt::Error;
+   |
+3  | use crate::std::io::Error;
+   |
+     and 4 other candidates
+
+error[E0412]: cannot find type `Error` in this scope
+  --> src/obshtml/cli.rs:30:56
+   |
+30 | fn execute_accept(cfg: AcceptConfig) -> Result<String, Error> {
+   |                                                        ^^^^^ not found in this scope
+   |
+help: consider importing one of these items
+   |
+3  | use core::fmt::Error;
+   |
+3  | use crate::std::error::Error;
+   |
+3  | use crate::std::fmt::Error;
+   |
+3  | use crate::std::io::Error;
+   |
+     and 4 other candidates
+
+error[E0433]: failed to resolve: use of undeclared type `Config`
+  --> src/main.rs:20:16
+   |
+20 |     let _cfg = Config::new("run");
+   |                ^^^^^^ not found in this scope
+   |
+help: consider importing this enum
+   |
+7  | use crate::cli::Config;
+   |
+
+error[E0573]: expected type, found variant `PosixPath::AbsolutePosixPath`
+  --> src/main.rs:35:25
+   |
+35 |     module_data_folder: PosixPath::AbsolutePosixPath(String)
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ not a type
+   |
+help: consider importing one of these items instead
+   |
+7  | use crate::obshtml::module::AbsolutePosixPath;
+   |
+7  | use crate::obshtml::paths::AbsolutePosixPath;
+   |
+
+error[E0063]: missing field `module_data_folder` in initializer of `RunConfig`
+  --> src/main.rs:29:22
+   |
+29 |     let run_config = RunConfig{}
+   |                      ^^^^^^^^^ missing `module_data_folder`
+
+Some errors have detailed explanations: E0063, E0412, E0433, E0573.
+For more information about an error, try `rustc --explain E0063`.
+error: could not compile `hello` due to 6 previous errors
